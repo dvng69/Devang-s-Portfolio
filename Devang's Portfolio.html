@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devang Chavan | 3D Animator</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+font-family:'Inter',sans-serif;
+background:#0f0f0f;
+color:#eaeaea;
+overflow-x:hidden;
+}
+
+/* HEADER */
+header{
+position:fixed;
+top:0;
+width:100%;
+background:#f2f2f2;
+padding:20px 60px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:1000;
+}
+
+header strong{font-size:36px;color:#000;}
+
+nav a{
+color:#000;
+margin-left:25px;
+font-size:20px;
+text-decoration:none;
+}
+
+/* SECTION */
+section{
+padding:160px 80px;
+min-height:100vh;
+}
+
+/* HERO */
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+background:url("images/hero.jpg") center/cover no-repeat;
+}
+
+.hero h1{font-size:100px;}
+.hero p{font-size:22px;margin-top:10px;opacity:0.85;}
+
+/* ABOUT */
+.about{height:200vh;}
+.about-wrapper{display:grid;grid-template-columns:1.2fr 1fr;gap:100px;}
+
+.about-overlay{
+position:sticky;
+top:0;
+background:#0f0f0f;
+padding-top:90px;
+}
+
+.about-title{font-size:56px;}
+
+.about-text{
+font-size:22px;
+line-height:1.7;
+margin-top:40px;
+max-width:700px;
+}
+
+.about-text p{margin-bottom:90px;}
+
+.about-image{
+position:sticky;
+top:140px;
+height:520px;
+}
+
+.about-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* VIDEO GRID */
+.video-grid{
+display:grid;
+grid-template-columns:repeat(3, 1fr);
+gap:30px;
+margin-top:40px;
+}
+
+.video-card{
+position:relative;
+aspect-ratio:1/1;
+border:2px solid #555;
+border-radius:16px;
+overflow:hidden;
+cursor:pointer;
+}
+
+.video-card img,
+.video-card video{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.video-card video{
+opacity:0;
+}
+
+.video-card:hover video{opacity:1;}
+.video-card:hover img{opacity:0;}
+
+/* MODAL */
+.modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+display:none;
+justify-content:center;
+align-items:center;
+z-index:3000;
+}
+
+.modal.active{display:flex;}
+
+.player{
+position:relative;
+width:80%;
+max-width:1000px;
+}
+
+.player video{
+width:100%;
+border-radius:10px;
+}
+
+/* CLOSE */
+.close-btn{
+position:absolute;
+top:20px;
+left:20px;
+font-size:22px;
+cursor:pointer;
+z-index:10;
+color:white;
+}
+
+/* CONTROLS */
+.controls{
+position:absolute;
+bottom:15px;
+width:100%;
+padding:0 20px;
+display:flex;
+flex-direction:column;
+gap:8px;
+}
+
+/* THIN SCRUBBER */
+.progress{
+width:100%;
+height:3px;
+background:#333;
+border-radius:10px;
+cursor:pointer;
+}
+
+.progress-filled{
+height:100%;
+width:0%;
+background:#aaa;
+border-radius:10px;
+position:relative;
+transition:width 0.1s linear;
+}
+
+.progress-filled::after{
+content:'';
+position:absolute;
+right:-5px;
+top:-4px;
+width:10px;
+height:10px;
+background:#fff;
+border-radius:50%;
+}
+
+/* CONTROLS ROW */
+.controls-bottom{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+/* LEFT */
+.left-controls{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+button{
+background:none;
+border:none;
+color:white;
+font-size:20px;
+cursor:pointer;
+}
+
+/* VOLUME */
+.volume{
+width:80px;
+height:3px;
+background:#444;
+appearance:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+.volume::-webkit-slider-thumb{
+appearance:none;
+width:10px;
+height:10px;
+background:white;
+border-radius:50%;
+}
+
+/* CONTACT */
+#contact h2{font-size:50px;margin-bottom:40px;}
+
+.contact-list{
+display:flex;
+flex-direction:column;
+gap:18px;
+}
+
+.contact-list a{
+color:white;
+font-size:20px;
+text-decoration:none;
+}
+
+.contact-list a:hover{color:#39d3c3;}
+
+footer{
+text-align:center;
+padding:15px;
+background:#0a0a0a;
+color:#666;
+border-top:1px solid #39d3c3;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<strong>Devang Chavan</strong>
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#work">Work</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<section id="home" class="hero">
+<h1>3D Animator</h1>
+<p>Stylized animation, game-ready motion.</p>
+</section>
+
+<section id="about" class="about">
+<div class="about-wrapper">
+
+<div>
+<div class="about-overlay">
+<h2 class="about-title">About Me</h2>
+</div>
+
+<div class="about-text">
+<p>I am a 3D Animator specializing in game animation and stylized character motion. I primarily work in Autodesk Maya, creating expressive performances, dynamic combat animations, and cinematic sequences.</p>
+<p>My focus is on bringing characters to life through strong poses, clear storytelling, and polished movement designed for engaging gameplay and visual impact.</p>
+<p>I studied animation and multimedia where I developed strong fundamentals in character performance, body mechanics and cinematic storytelling.</p>
+<p>Currently I work as a 3D Animator creating stylized animations and cinematic motion for digital experiences and interactive media.</p>
+</div>
+</div>
+
+<div class="about-image">
+<img src="images/profile.jpg">
+</div>
+
+</div>
+</section>
+
+<section id="work">
+<h2 style="font-size:50px;margin-bottom:40px;">Work</h2>
+
+<div class="video-grid">
+
+<div class="video-card" onmouseenter="previewPlay(this)" onmouseleave="previewStop(this)" onclick="openVideo('videos/video1.mp4')">
+<img src="images/thumb1.jpg">
+<video src="videos/video1.mp4" muted loop></video>
+</div>
+
+<div class="video-card" onmouseenter="previewPlay(this)" onmouseleave="previewStop(this)" onclick="openVideo('videos/video2.mp4')">
+<img src="images/thumb2.bmp">
+<video src="videos/video2.mp4" muted loop></video>
+</div>
+
+<div class="video-card" onmouseenter="previewPlay(this)" onmouseleave="previewStop(this)" onclick="openVideo('videos/video3.mp4')">
+<img src="images/thumb3.jpg">
+<video src="videos/video3.mp4" muted loop></video>
+</div>
+
+<div class="video-card" onmouseenter="previewPlay(this)" onmouseleave="previewStop(this)" onclick="openVideo('videos/video4.mp4')">
+<img src="images/thumb4.jpg">
+<video src="videos/video4.mp4" muted loop></video>
+</div>
+
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+<div class="contact-list">
+<a href="mailto:devchavan48@email.com">Email</a>
+<a href="#" onclick="copyPhone()">Phone</a>
+<a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+<a href="https://www.instagram.com" target="_blank">Instagram</a>
+</div>
+</section>
+
+<footer>© 2026 Devang Chavan</footer>
+
+<!-- PLAYER -->
+<div class="modal" id="modal">
+<div class="player">
+
+<div class="close-btn" onclick="closeModal()">✕</div>
+
+<video id="video"></video>
+
+<div class="controls">
+
+<div class="progress" id="progressBar">
+<div class="progress-filled" id="progress"></div>
+</div>
+
+<div class="controls-bottom">
+
+<div class="left-controls">
+<button id="playBtn">▶</button>
+<button onclick="toggleMute()">🔊</button>
+<input type="range" min="0" max="1" step="0.01" class="volume" id="volumeSlider">
+</div>
+
+<button onclick="fullscreen()">⛶</button>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+<script>
+
+const modal=document.getElementById("modal");
+const video=document.getElementById("video");
+const progress=document.getElementById("progress");
+const progressBar=document.getElementById("progressBar");
+const playBtn=document.getElementById("playBtn");
+const volumeSlider=document.getElementById("volumeSlider");
+
+let isDragging=false;
+
+function openVideo(src){
+modal.classList.add("active");
+video.src=src;
+video.play();
+updateIcon();
+}
+
+function closeModal(){
+modal.classList.remove("active");
+video.pause();
+video.src="";
+}
+
+/* PLAY */
+function togglePlay(){
+video.paused ? video.play() : video.pause();
+updateIcon();
+}
+
+function updateIcon(){
+playBtn.textContent = video.paused ? "▶" : "❚❚";
+}
+
+playBtn.onclick=togglePlay;
+video.onclick=togglePlay;
+
+/* SPACEBAR */
+document.addEventListener("keydown",(e)=>{
+if(e.code==="Space"){
+e.preventDefault();
+togglePlay();
+}
+});
+
+/* FULLSCREEN DOUBLE CLICK */
+video.addEventListener("dblclick",()=>{
+if(!document.fullscreenElement){
+video.requestFullscreen();
+}else{
+document.exitFullscreen();
+}
+});
+
+function fullscreen(){
+video.requestFullscreen();
+}
+
+/* VOLUME */
+volumeSlider.addEventListener("input",()=>{
+video.volume=volumeSlider.value;
+});
+
+function toggleMute(){
+video.muted=!video.muted;
+}
+
+/* PROGRESS SMOOTH */
+video.addEventListener("timeupdate",()=>{
+if(!isDragging){
+let percent=(video.currentTime/video.duration)*100;
+progress.style.width=percent+"%";
+}
+});
+
+/* SEEK */
+progressBar.addEventListener("mousedown",()=>{
+isDragging=true;
+});
+
+document.addEventListener("mouseup",()=>{
+isDragging=false;
+});
+
+document.addEventListener("mousemove",(e)=>{
+if(isDragging){
+let rect=progressBar.getBoundingClientRect();
+let percent=(e.clientX-rect.left)/rect.width;
+percent=Math.max(0,Math.min(1,percent));
+progress.style.width=(percent*100)+"%";
+video.currentTime=percent*video.duration;
+}
+});
+
+/* PREVIEW */
+function previewPlay(card){
+card.querySelector("video").play();
+}
+
+function previewStop(card){
+let v=card.querySelector("video");
+v.pause();
+v.currentTime=0;
+}
+
+/* COPY */
+function copyPhone(){
+navigator.clipboard.writeText("+919168379346");
+alert("Phone copied!");
+}
+
+</script>
+
+</body>
+</html>
